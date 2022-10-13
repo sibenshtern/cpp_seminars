@@ -88,6 +88,13 @@ auto temp_stats(std::vector<Reading> temps) {
          }
     );
 
+    for (const Reading &r : temps)
+        mean += r.temperature;
+
+    mean /= temps.size();
+    
+    median = temps[temps.size() / 2].temperature;
+
     return std::make_pair(mean, median);
 }
 
